@@ -1,0 +1,11 @@
+{
+  "name": "nodebird",
+  "version": "0.0.1",
+  "description": "node.js를 통해 백엔드 공부하기",
+  "main": "app.js",
+  "scripts": {
+    "start" : "nodemon app"
+  },
+  "author": "hojun",
+  "license": "MIT"
+}
