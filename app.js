@@ -8,6 +8,7 @@ const dotenv = require("dotenv");
 
 dotenv.config();
 const pageRouter = require('./routes/page');
+const {sequelize} = require('./models'); // ./modles/index.js를 생략한 것임
 const { appendFileSync } = require("fs");
 
 const app = express();
@@ -17,6 +18,15 @@ nunjucks.configure('views',{
   express : app,
   watch : true,
 });
+sequelize.sync({force : false})
+  .then(()=> {
+    console.log("데이터베이스 연결 성공");
+  })
+  .catch(()=>{
+    console.log((err)=>{
+      console.log(err);
+    })
+  });
 
 app.use(morgan('dev'));
 app.use(express.static(path.join(__dirname, 'public')));
